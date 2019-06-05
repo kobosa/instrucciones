@@ -77,3 +77,29 @@ ln -s docker-compose.local.yml docker-compose.yml
 docker-compose pull
 docker-compose up
 ```
+
+
+# Ejecutar con kobo-install
+Una vez editado el código en **kpi**, debemos eliminar la carpeta **staticfiles** para que se compilen nuevamentos los archivos **jsapp**.
+Para que se compilen los archivos de la carpeta **jsapp** se utilizara **kobo-docker** del repositorio [kobosa](https://github.com/kobosa) y correrlo con las instrucciones.
+
+Luego eliminamos la carpeta **kobo-docker**, y proceder con los pasos:
+  1. Descargar el repositorio [kobo-install](https://github.com/kobotoolbox/kobo-install)
+  2. Ejecutar ```python run.py ``` 
+  3. Detenemos ```python run.py --stop ```
+  4. Agregamos las lineas:
+   - En docker-compose.frontend.yml -> kpi -> volumenes
+   ```- ../kpi:/srv/src/kpi```
+- En docker-compose.frontend.yml -> enketo_express -> volumenes
+```- ../enketo-express:/srv/src/enketo_express```
+
+  5. Ejecutamos nuevamente para ver los cambios ```python run.py ``` 
+
+
+# Abrir de KoboReports
+
+  - Abrir, comando:
+  ```screen -R```
+   
+  - Cerrar, teclas:
+  Ctrl + A y luego presionamos D
